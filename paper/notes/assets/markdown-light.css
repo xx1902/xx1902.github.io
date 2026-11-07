@@ -1,0 +1,243 @@
+/*
+ * Adapted from awe-light.css / DrakeTyporaTheme.
+ * Copyright (C) 2018 Drake, Inc. Licensed under Apache-2.0.
+ * https://github.com/liangjingkanji/DrakeTyporaTheme
+ * See awe-light-LICENSE.txt for the license.
+ */
+body[data-section="paper"] #note-detail {
+    background: #fff;
+}
+
+body[data-section="paper"] #note-detail .detail-content {
+    --md-text: #333;
+    --md-title: #273849;
+    --md-accent: #21a3f1;
+    --md-code-bg: #f6f8fa;
+    --md-code-text: #24292e;
+    --md-quote-bg: #d9f2fa;
+    --md-table-border: #dfe2e5;
+    min-width: 0;
+    margin-top: 20px;
+    padding-top: 22px;
+    border-top: 1px solid var(--md-table-border);
+    color: var(--md-text);
+    background: #fff;
+    font-family: "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", Arial, sans-serif;
+    font-size: 14px;
+    line-height: 1.8;
+    letter-spacing: 0;
+    overflow-wrap: anywhere;
+    text-rendering: optimizeLegibility;
+}
+
+body[data-section="paper"].reader-mode #note-detail .detail-content {
+    font-size: 16px;
+}
+
+body[data-section="paper"] #note-detail .detail-content :is(h1, h2, h3, h4, h5, h6) {
+    margin: 1.8em 0 0.8em;
+    padding: 0;
+    border: 0;
+    color: var(--md-title);
+    font-family: inherit;
+    font-weight: 700;
+    line-height: 1.4;
+    letter-spacing: 0;
+    scroll-margin-top: 90px;
+}
+
+body[data-section="paper"] #note-detail .detail-content h1 {
+    font-size: 1.8em;
+    text-align: center;
+}
+
+body[data-section="paper"] #note-detail .detail-content h2 {
+    margin-top: 1.6em;
+    padding-left: 10px;
+    border-left: 3px solid #287c73;
+    font-size: 1.55em;
+    line-height: 1.65;
+    text-decoration: none;
+}
+
+body[data-section="paper"] #note-detail .detail-content h3 {
+    margin-top: 1.4em;
+    color: #45677a;
+    font-size: 1.3em;
+}
+body[data-section="paper"] #note-detail .detail-content h4 { font-size: 1.15em; }
+body[data-section="paper"] #note-detail .detail-content :is(h5, h6) { font-size: 1em; }
+body[data-section="paper"] #note-detail .detail-content > :first-child { margin-top: 0; }
+body[data-section="paper"] #note-detail .detail-content > :last-child { margin-bottom: 0; }
+
+body[data-section="paper"] #note-detail .detail-content :is(p, ul, ol, dl, table, pre, blockquote) {
+    margin: 0.9em 0;
+    line-height: inherit;
+}
+
+body[data-section="paper"] #note-detail .detail-content strong {
+    color: var(--md-title);
+    font-weight: 700;
+}
+
+body[data-section="paper"] #note-detail .detail-content mark {
+    display: inline-block;
+    box-sizing: border-box;
+    max-width: calc(100% - 0.4em);
+    padding: 0.05em 0.5em;
+    margin: 0 0.2em;
+    border: 1px solid var(--md-accent);
+    border-radius: 2em;
+    color: #0879bc;
+    background: transparent;
+    font-size: 0.95em;
+    line-height: 1.5;
+    vertical-align: baseline;
+    white-space: normal;
+}
+
+body[data-section="paper"] #note-detail .detail-content a {
+    color: #0879bc;
+    text-decoration: underline;
+    text-decoration-color: var(--md-accent);
+    text-underline-offset: 3px;
+}
+
+body[data-section="paper"] #note-detail .detail-content a:hover {
+    color: var(--md-title);
+}
+
+body[data-section="paper"] #note-detail .detail-content a:focus-visible {
+    outline: 2px solid var(--md-accent);
+    outline-offset: 3px;
+}
+
+body[data-section="paper"] #note-detail .detail-content :is(ul, ol) {
+    padding-inline-start: 1.8em;
+}
+
+body[data-section="paper"] #note-detail .detail-content li { margin: 0.35em 0; }
+body[data-section="paper"] #note-detail .detail-content li > :is(ul, ol) { margin: 0; }
+body[data-section="paper"] #note-detail .detail-content li > p { margin: 0.35em 0; }
+
+body[data-section="paper"] #note-detail .detail-content blockquote {
+    padding: 10px 16px;
+    border: 0;
+    border-left: 4px solid var(--md-accent);
+    border-radius: 6px;
+    background: var(--md-quote-bg);
+    color: var(--md-text);
+}
+
+body[data-section="paper"] #note-detail .detail-content blockquote > :first-child { margin-top: 0; }
+body[data-section="paper"] #note-detail .detail-content blockquote > :last-child { margin-bottom: 0; }
+
+body[data-section="paper"] #note-detail .detail-content code {
+    padding: 0.12em 0.3em;
+    border-radius: 3px;
+    color: #0879bc;
+    background: var(--md-code-bg);
+    font-family: Consolas, "Cascadia Code", "Microsoft YaHei", monospace;
+    font-size: 0.9em;
+}
+
+body[data-section="paper"] #note-detail .detail-content pre {
+    max-width: 100%;
+    padding: 14px 16px;
+    border: 1px solid var(--md-table-border);
+    border-radius: 6px;
+    background: var(--md-code-bg);
+    color: var(--md-code-text);
+    line-height: 1.6;
+    overflow-x: auto;
+    overflow-wrap: normal;
+    tab-size: 4;
+}
+
+body[data-section="paper"] #note-detail .detail-content pre code {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    border-radius: 0;
+    color: inherit;
+    background: transparent;
+    white-space: pre;
+}
+
+body[data-section="paper"] #note-detail .detail-content .katex-display {
+    max-width: 100%;
+    margin: 1.25em 0;
+    padding: 0.7em 0;
+    overflow-x: auto;
+    overflow-y: hidden;
+    scrollbar-width: thin;
+}
+
+body[data-section="paper"] #note-detail .detail-content .katex-display > .katex {
+    min-width: max-content;
+    padding-inline: 12px;
+}
+
+body[data-section="paper"] #note-detail .detail-content table {
+    display: block;
+    width: max-content;
+    max-width: 100%;
+    border-collapse: collapse;
+    color: var(--md-text);
+    font-size: 0.92em;
+    overflow-x: auto;
+}
+
+body[data-section="paper"] #note-detail .detail-content :is(th, td) {
+    min-width: 70px;
+    padding: 8px 12px;
+    border: 1px solid var(--md-table-border);
+    vertical-align: top;
+    overflow-wrap: normal;
+}
+
+body[data-section="paper"] #note-detail .detail-content th {
+    color: var(--md-title);
+    background: var(--md-quote-bg);
+    font-weight: 700;
+}
+
+body[data-section="paper"] #note-detail .detail-content tbody tr:nth-child(even) {
+    background: #f0f9fc;
+}
+
+body[data-section="paper"] #note-detail .detail-content img {
+    display: block;
+    max-width: 100%;
+    height: auto;
+    margin: 1.2em auto;
+    border-radius: 6px;
+}
+
+body[data-section="paper"] #note-detail .detail-content hr {
+    height: 1px;
+    margin: 1.8em 0;
+    border: 0;
+    background: #c6d1da;
+}
+
+body[data-section="paper"] #note-detail .detail-content kbd {
+    padding: 0.1em 0.4em;
+    border: 1px solid #b7c3cc;
+    border-radius: 4px;
+    background: var(--md-code-bg);
+    font-family: inherit;
+    font-size: 0.9em;
+    box-shadow: 0 1px 1px #2738491a;
+}
+
+@media print {
+    body[data-section="paper"] #note-detail .detail-content :is(pre, table, blockquote) {
+        break-inside: avoid;
+    }
+    body[data-section="paper"] #note-detail .detail-content pre {
+        white-space: pre-wrap;
+        overflow-wrap: anywhere;
+    }
+    body[data-section="paper"] #note-detail .detail-content pre code { white-space: inherit; }
+}

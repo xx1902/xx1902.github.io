@@ -1,0 +1,54 @@
+[
+  {
+    "name": "ICML",
+    "label": "ICML",
+    "description": "ICML 2026 官方论文浏览入口与 PMLR 论文集",
+    "url": "https://icml.cc/virtual/2026/papers.html",
+    "archiveUrl": "https://icml.cc/Conferences/PastConferences",
+    "archiveLabel": "ICML 历届会议与论文入口",
+    "years": {
+      "2024": "https://icml.cc/virtual/2024/papers.html",
+      "2025": "https://icml.cc/virtual/2025/papers.html",
+      "2026": "https://icml.cc/virtual/2026/papers.html"
+    }
+  },
+  {
+    "name": "ACL",
+    "label": "ACL",
+    "description": "ACL 2025 长文论文集与正式出版记录",
+    "url": "https://aclanthology.org/events/acl-2025/",
+    "archiveUrl": "https://aclanthology.org/venues/acl/",
+    "archiveLabel": "ACL Anthology 完整出版记录",
+    "years": {
+      "2023": "https://aclanthology.org/events/acl-2023/",
+      "2024": "https://aclanthology.org/events/acl-2024/",
+      "2025": "https://aclanthology.org/events/acl-2025/"
+    }
+  },
+  {
+    "name": "OSDI",
+    "label": "OSDI",
+    "description": "USENIX OSDI 2024 会议与论文发布页面",
+    "url": "https://www.usenix.org/conference/osdi24",
+    "archiveUrl": "https://www.usenix.org/conferences/byname/179",
+    "archiveLabel": "USENIX OSDI 历届会议",
+    "years": {
+      "2022": "https://www.usenix.org/conference/osdi22/technical-sessions",
+      "2023": "https://www.usenix.org/conference/osdi23/technical-sessions",
+      "2024": "https://www.usenix.org/conference/osdi24/technical-sessions"
+    }
+  },
+  {
+    "name": "MobiSys",
+    "label": "MobiSys",
+    "description": "MobiSys 2025 官方录用论文列表与会议入口",
+    "url": "https://sigmobile.org/mobisys/2025/accepted_papers/",
+    "archiveUrl": "https://www.sigmobile.org/grav/events/conferences/mobisys",
+    "archiveLabel": "SIGMOBILE 历届会议与论文入口",
+    "years": {
+      "2023": "https://www.sigmobile.org/mobisys/2023/accepted-papers.html",
+      "2024": "https://www.sigmobile.org/mobisys/2024/accepted-papers.html",
+      "2025": "https://sigmobile.org/mobisys/2025/accepted_papers/"
+    }
+  }
+]

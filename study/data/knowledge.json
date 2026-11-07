@@ -1,0 +1,625 @@
+{
+  "version": 1,
+  "levels": [
+    {
+      "id": "unknown",
+      "label": "不了解",
+      "score": 0,
+      "min": 0,
+      "max": 14,
+      "color": "#e1e5e8",
+      "description": "尚不能说明概念或适用场景。"
+    },
+    {
+      "id": "heard",
+      "label": "听说过",
+      "score": 20,
+      "min": 15,
+      "max": 34,
+      "color": "#add8e6",
+      "description": "见过术语，尚未系统梳理。"
+    },
+    {
+      "id": "familiar",
+      "label": "了解",
+      "score": 45,
+      "min": 35,
+      "max": 59,
+      "color": "#ffdb58",
+      "description": "能解释用途和基本流程，尚缺实践证据。"
+    },
+    {
+      "id": "practicing",
+      "label": "实践中",
+      "score": 70,
+      "min": 60,
+      "max": 84,
+      "color": "#f4c2c2",
+      "description": "完成过最小实践，正在补齐边界与评测。"
+    },
+    {
+      "id": "mastered",
+      "label": "掌握",
+      "score": 100,
+      "min": 85,
+      "max": 100,
+      "color": "#3cb371",
+      "description": "自评能解释原理、独立实践并讨论限制。"
+    }
+  ],
+  "groups": [
+    {
+      "id": "llm-foundations",
+      "label": "模型基础",
+      "directions": [
+        "模型结构",
+        "生成机制"
+      ],
+      "paths": {
+        "architecture": "模型结构",
+        "generation": "生成机制"
+      }
+    },
+    {
+      "id": "adaptation",
+      "label": "微调与对齐",
+      "directions": [
+        "参数高效微调",
+        "强化学习与对齐"
+      ],
+      "paths": {
+        "peft": "参数高效微调",
+        "alignment": "强化学习与对齐"
+      }
+    },
+    {
+      "id": "inference",
+      "label": "大模型推理",
+      "directions": [
+        "推理加速",
+        "模型压缩"
+      ],
+      "paths": {
+        "acceleration": "推理加速",
+        "compression": "模型压缩"
+      }
+    },
+    {
+      "id": "ai-infra",
+      "label": "AI Infra",
+      "directions": [
+        "推理优化",
+        "分布式系统",
+        "平台工程"
+      ],
+      "paths": {
+        "inference-optimization": "推理优化",
+        "distributed-systems": "分布式系统",
+        "platform": "平台工程"
+      }
+    },
+    {
+      "id": "llama-cpp",
+      "label": "llama.cpp",
+      "directions": [
+        "运行时与源码",
+        "量化与部署"
+      ],
+      "paths": {
+        "runtime": "运行时与源码",
+        "deployment": "量化与部署"
+      }
+    },
+    {
+      "id": "agents",
+      "label": "Agent",
+      "directions": [
+        "工具与工作流",
+        "检索与评测"
+      ],
+      "paths": {
+        "workflow": "工具与工作流",
+        "retrieval-evaluation": "检索与评测"
+      }
+    },
+    {
+      "id": "multimodal",
+      "label": "多模态与具身",
+      "directions": [
+        "视觉语言",
+        "具身与动作",
+        "待确认术语"
+      ],
+      "paths": {
+        "vision-language": "视觉语言",
+        "embodied": "具身与动作",
+        "terminology": "待确认术语"
+      }
+    }
+  ],
+  "nodes": [
+    {
+      "id": "transformer",
+      "label": "Transformer",
+      "group": "llm-foundations",
+      "direction": "模型结构",
+      "level": "practicing",
+      "description": "注意力、MLP、残差与归一化；理解张量形状与数据流。",
+      "score": 60
+    },
+    {
+      "id": "tokenizer",
+      "label": "Tokenizer",
+      "group": "llm-foundations",
+      "direction": "生成机制",
+      "level": "unknown",
+      "description": "文本与 token ID 的映射、词表与序列长度。"
+    },
+    {
+      "id": "attention",
+      "label": "Attention / GQA",
+      "group": "llm-foundations",
+      "direction": "模型结构",
+      "level": "unknown",
+      "description": "Q/K/V、因果掩码以及 MHA、MQA、GQA 的区别。"
+    },
+    {
+      "id": "generation",
+      "label": "Prefill / Decode",
+      "group": "llm-foundations",
+      "direction": "生成机制",
+      "level": "unknown",
+      "description": "上下文预填充与逐 token 自回归生成的计算、访存差异。"
+    },
+    {
+      "id": "lora",
+      "label": "LoRA",
+      "group": "adaptation",
+      "direction": "参数高效微调",
+      "level": "mastered",
+      "description": "低秩增量适配；是微调方法，不直接等同于推理加速。合并权重与多适配器服务需分别考虑。"
+    },
+    {
+      "id": "qlora",
+      "label": "QLoRA",
+      "group": "adaptation",
+      "direction": "参数高效微调",
+      "level": "unknown",
+      "description": "结合量化基座与低秩适配，关注训练显存和精度约束。"
+    },
+    {
+      "id": "sft",
+      "label": "SFT",
+      "group": "adaptation",
+      "direction": "参数高效微调",
+      "level": "unknown",
+      "description": "监督微调的数据格式、损失掩码与基线评测。"
+    },
+    {
+      "id": "rl",
+      "label": "强化学习",
+      "group": "adaptation",
+      "direction": "强化学习与对齐",
+      "level": "unknown",
+      "description": "状态、动作、策略、回报与优化目标；不仅用于大模型对齐。"
+    },
+    {
+      "id": "alignment",
+      "label": "RLHF / PPO / GRPO",
+      "group": "adaptation",
+      "direction": "强化学习与对齐",
+      "level": "unknown",
+      "description": "反馈与奖励驱动的后训练路线；各算法和奖励假设需要分别理解。"
+    },
+    {
+      "id": "kv-cache",
+      "label": "KV Cache",
+      "group": "inference",
+      "direction": "推理加速",
+      "level": "unknown",
+      "description": "缓存历史 K/V，关注容量、生命周期与复用；并非消除所有解码开销。"
+    },
+    {
+      "id": "quantization",
+      "label": "量化",
+      "group": "inference",
+      "direction": "模型压缩",
+      "level": "unknown",
+      "description": "降低权重或激活表示精度；速度收益依赖内核、硬件与负载。"
+    },
+    {
+      "id": "distillation",
+      "label": "知识蒸馏",
+      "group": "inference",
+      "direction": "模型压缩",
+      "level": "unknown",
+      "description": "借助教师模型信号训练学生；区别于量化和投机解码。"
+    },
+    {
+      "id": "speculative",
+      "label": "投机解码",
+      "group": "inference",
+      "direction": "推理加速",
+      "level": "unknown",
+      "description": "草稿产生候选并由目标模型验证；收益与接受率、验证开销及负载有关。"
+    },
+    {
+      "id": "flash-attention",
+      "label": "FlashAttention",
+      "group": "inference",
+      "direction": "推理加速",
+      "level": "unknown",
+      "description": "优化注意力的 IO 与内存访问；与缓存分页属于不同层面的优化。"
+    },
+    {
+      "id": "batching",
+      "label": "Continuous Batching",
+      "group": "ai-infra",
+      "direction": "推理优化",
+      "level": "unknown",
+      "description": "按迭代组织动态请求，权衡吞吐、排队和延迟。"
+    },
+    {
+      "id": "serving",
+      "label": "vLLM / SGLang",
+      "group": "ai-infra",
+      "direction": "推理优化",
+      "level": "unknown",
+      "description": "服务调度、缓存与执行引擎；用固定负载测量，不假定某框架总是更快。"
+    },
+    {
+      "id": "cuda",
+      "label": "CUDA / Triton",
+      "group": "ai-infra",
+      "direction": "推理优化",
+      "level": "unknown",
+      "description": "GPU 算子实现与性能分析，关注访存、并行度及数值误差。"
+    },
+    {
+      "id": "parallel",
+      "label": "TP / PP / EP",
+      "group": "ai-infra",
+      "direction": "分布式系统",
+      "level": "unknown",
+      "description": "张量、流水线、专家并行；通信、切分和调度策略各不相同。"
+    },
+    {
+      "id": "collectives",
+      "label": "NCCL / 通信",
+      "group": "ai-infra",
+      "direction": "分布式系统",
+      "level": "unknown",
+      "description": "集合通信、互联拓扑及计算通信重叠。"
+    },
+    {
+      "id": "observability",
+      "label": "可观测性 / 基准",
+      "group": "ai-infra",
+      "direction": "平台工程",
+      "level": "unknown",
+      "description": "TTFT、TPOT、吞吐、尾延迟、资源使用和正确性；同时记录实验口径。"
+    },
+    {
+      "id": "platform",
+      "label": "Kubernetes / 平台",
+      "group": "ai-infra",
+      "direction": "平台工程",
+      "level": "unknown",
+      "description": "部署、资源调度、弹性、可靠性和成本；与模型内核优化分工不同。"
+    },
+    {
+      "id": "llama-runtime",
+      "label": "llama.cpp / GGUF",
+      "group": "llama-cpp",
+      "direction": "运行时与源码",
+      "level": "unknown",
+      "description": "加载、计算图、后端选择与解码路径。"
+    },
+    {
+      "id": "ggml",
+      "label": "GGML / 后端",
+      "group": "llama-cpp",
+      "direction": "量化与部署",
+      "level": "unknown",
+      "description": "张量与后端执行、量化格式以及 CPU/GPU 分工。"
+    },
+    {
+      "id": "agent",
+      "label": "Agent",
+      "group": "agents",
+      "direction": "工具与工作流",
+      "level": "familiar",
+      "description": "模型驱动工具调用、状态与反馈循环；应设置执行边界和任务评测。"
+    },
+    {
+      "id": "tool-use",
+      "label": "工具调用 / MCP",
+      "group": "agents",
+      "direction": "工具与工作流",
+      "level": "unknown",
+      "description": "工具接口与调用协议、输入校验、权限与失败处理；协议不等于智能体本身。"
+    },
+    {
+      "id": "rag",
+      "label": "RAG / 记忆",
+      "group": "agents",
+      "direction": "检索与评测",
+      "level": "unknown",
+      "description": "检索、重排、上下文构造与引用评测；可以独立于 Agent 使用。"
+    },
+    {
+      "id": "agent-eval",
+      "label": "Agent 评测",
+      "group": "agents",
+      "direction": "检索与评测",
+      "level": "unknown",
+      "description": "任务成功率、工具正确性、成本与安全性，不只评估单轮回答。"
+    },
+    {
+      "id": "vlm",
+      "label": "VLM",
+      "group": "multimodal",
+      "direction": "视觉语言",
+      "level": "unknown",
+      "description": "视觉编码器与语言模型协作，处理图像和文本。"
+    },
+    {
+      "id": "vla",
+      "label": "VLA",
+      "group": "multimodal",
+      "direction": "具身与动作",
+      "level": "unknown",
+      "description": "视觉、语言到动作的建模；与 VLM 的任务与评测对象不同。"
+    },
+    {
+      "id": "imitation",
+      "label": "模仿学习 / 控制",
+      "group": "multimodal",
+      "direction": "具身与动作",
+      "level": "unknown",
+      "description": "示范数据、动作表示、闭环控制与仿真或真实环境评测。"
+    },
+    {
+      "id": "vlt",
+      "label": "VLT · 待确认",
+      "group": "multimodal",
+      "direction": "待确认术语",
+      "level": "heard",
+      "description": "保留用户原始缩写 VLT，尚未确认具体指代；不自动解释成 VLM 或 VLA，因此暂不连接技术依赖。"
+    }
+  ],
+  "edges": [
+    {
+      "source": "tokenizer",
+      "target": "generation",
+      "type": "prerequisite",
+      "label": "序列表示"
+    },
+    {
+      "source": "attention",
+      "target": "transformer",
+      "type": "component",
+      "label": "结构组件"
+    },
+    {
+      "source": "transformer",
+      "target": "generation",
+      "type": "prerequisite",
+      "label": "模型基础"
+    },
+    {
+      "source": "transformer",
+      "target": "lora",
+      "type": "prerequisite",
+      "label": "适配模型权重"
+    },
+    {
+      "source": "sft",
+      "target": "lora",
+      "type": "combination",
+      "label": "可采用"
+    },
+    {
+      "source": "lora",
+      "target": "qlora",
+      "type": "combination",
+      "label": "低秩适配"
+    },
+    {
+      "source": "quantization",
+      "target": "qlora",
+      "type": "combination",
+      "label": "量化基座"
+    },
+    {
+      "source": "rl",
+      "target": "alignment",
+      "type": "prerequisite",
+      "label": "优化基础"
+    },
+    {
+      "source": "generation",
+      "target": "kv-cache",
+      "type": "prerequisite",
+      "label": "解码复用"
+    },
+    {
+      "source": "attention",
+      "target": "flash-attention",
+      "type": "prerequisite",
+      "label": "注意力实现"
+    },
+    {
+      "source": "kv-cache",
+      "target": "serving",
+      "type": "support",
+      "label": "缓存管理"
+    },
+    {
+      "source": "batching",
+      "target": "serving",
+      "type": "support",
+      "label": "请求调度"
+    },
+    {
+      "source": "cuda",
+      "target": "flash-attention",
+      "type": "support",
+      "label": "内核实现"
+    },
+    {
+      "source": "generation",
+      "target": "speculative",
+      "type": "prerequisite",
+      "label": "候选与验证"
+    },
+    {
+      "source": "distillation",
+      "target": "speculative",
+      "type": "combination",
+      "label": "可训练草稿模型；非必需"
+    },
+    {
+      "source": "quantization",
+      "target": "serving",
+      "type": "combination",
+      "label": "压缩权重或缓存"
+    },
+    {
+      "source": "collectives",
+      "target": "parallel",
+      "type": "support",
+      "label": "跨设备通信"
+    },
+    {
+      "source": "parallel",
+      "target": "serving",
+      "type": "support",
+      "label": "分布式执行"
+    },
+    {
+      "source": "observability",
+      "target": "serving",
+      "type": "support",
+      "label": "评测与诊断"
+    },
+    {
+      "source": "platform",
+      "target": "serving",
+      "type": "support",
+      "label": "部署与资源"
+    },
+    {
+      "source": "ggml",
+      "target": "llama-runtime",
+      "type": "support",
+      "label": "张量后端"
+    },
+    {
+      "source": "quantization",
+      "target": "ggml",
+      "type": "combination",
+      "label": "量化格式与算子"
+    },
+    {
+      "source": "generation",
+      "target": "llama-runtime",
+      "type": "prerequisite",
+      "label": "生成路径"
+    },
+    {
+      "source": "serving",
+      "target": "agent",
+      "type": "support",
+      "label": "模型服务"
+    },
+    {
+      "source": "tool-use",
+      "target": "agent",
+      "type": "component",
+      "label": "工具接口"
+    },
+    {
+      "source": "rag",
+      "target": "agent",
+      "type": "combination",
+      "label": "可选检索能力"
+    },
+    {
+      "source": "agent-eval",
+      "target": "agent",
+      "type": "support",
+      "label": "任务验证"
+    },
+    {
+      "source": "transformer",
+      "target": "vlm",
+      "type": "prerequisite",
+      "label": "序列建模基础"
+    },
+    {
+      "source": "vlm",
+      "target": "vla",
+      "type": "prerequisite",
+      "label": "视觉语言表示"
+    },
+    {
+      "source": "imitation",
+      "target": "vla",
+      "type": "support",
+      "label": "动作与示范"
+    },
+    {
+      "source": "rl",
+      "target": "vla",
+      "type": "combination",
+      "label": "可选策略优化"
+    }
+  ],
+  "references": [
+    {
+      "label": "LoRA 原论文",
+      "url": "https://arxiv.org/abs/2106.09685",
+      "concepts": [
+        "lora"
+      ]
+    },
+    {
+      "label": "QLoRA 原论文",
+      "url": "https://arxiv.org/abs/2305.14314",
+      "concepts": [
+        "qlora"
+      ]
+    },
+    {
+      "label": "投机解码原论文",
+      "url": "https://arxiv.org/abs/2211.17192",
+      "concepts": [
+        "speculative"
+      ]
+    },
+    {
+      "label": "vLLM 官方文档",
+      "url": "https://docs.vllm.ai/en/latest/",
+      "concepts": [
+        "serving",
+        "batching"
+      ]
+    },
+    {
+      "label": "llama.cpp 源码",
+      "url": "https://github.com/ggml-org/llama.cpp",
+      "concepts": [
+        "llama-runtime",
+        "ggml"
+      ]
+    },
+    {
+      "label": "RT-2：VLA",
+      "url": "https://arxiv.org/abs/2307.15818",
+      "concepts": [
+        "vla"
+      ]
+    }
+  ]
+}

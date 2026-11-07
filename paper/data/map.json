@@ -1,0 +1,123 @@
+{
+  "graph": {
+    "title": "推理系统与模型服务",
+    "description": "从端侧与分布式服务，到 KV Cache 复用和 RAG 预填充"
+  },
+  "aside": {
+    "kicker": "PAPER / TOPICS",
+    "title": "研究方向",
+    "steps": ["定位系统约束", "对照方法设计", "检查实验边界"],
+    "description": "图谱按论文主题建立索引；连线表示阅读与方法之间的关联，不代表论文原始系统架构。"
+  },
+  "layers": [
+    {
+      "topic": "edge-inference",
+      "title": "端侧推理",
+      "shortTitle": "端侧推理",
+      "description": "设备内存、功耗与异构硬件约束下的模型推理。",
+      "color": "#258c7b"
+    },
+    {
+      "topic": "distributed-inference",
+      "title": "分布式推理",
+      "shortTitle": "分布式推理",
+      "description": "多副本、多 GPU 的请求调度、负载均衡与状态迁移。",
+      "color": "#507fc6"
+    },
+    {
+      "topic": "lora-serving",
+      "title": "LoRA 多租户服务",
+      "shortTitle": "LoRA 服务",
+      "description": "共享基础模型时的适配器选择、批处理、缓存与资源管理。",
+      "color": "#bf6c79"
+    },
+    {
+      "topic": "kv-cache",
+      "title": "KV Cache 复用",
+      "shortTitle": "KV Cache",
+      "description": "缓存共享、增量编码、保留策略与跨文档注意力恢复。",
+      "color": "#8f6ab4"
+    },
+    {
+      "topic": "rag-prefill",
+      "title": "RAG 预填充优化",
+      "shortTitle": "RAG Prefill",
+      "description": "在检索长上下文中选择性重算，平衡首 token 延迟与生成质量。",
+      "color": "#b98b3b"
+    }
+  ],
+  "rootTopics": [
+    "edge-inference",
+    "distributed-inference",
+    "lora-serving",
+    "kv-cache",
+    "rag-prefill"
+  ],
+  "directions": [
+    {
+      "id": "mobile-lora-serving",
+      "topic": "edge-inference",
+      "title": "端侧 LoRA 服务",
+      "description": "移动设备上的适配器选择、缓存与推理服务。",
+      "papers": ["acl-2025-mobilora", "mobisys-2025-edgelora"]
+    },
+    {
+      "id": "edge-adapter-memory",
+      "topic": "edge-inference",
+      "title": "端侧适配器内存管理",
+      "description": "设备内存约束下的适配器驻留与资源管理。",
+      "papers": ["mobisys-2025-edgelora"]
+    },
+    {
+      "id": "distributed-lora-serving",
+      "topic": "distributed-inference",
+      "title": "分布式 LoRA Serving",
+      "description": "GPU 集群中的多适配器请求处理与服务。",
+      "papers": ["osdi-2024-dlora"]
+    },
+    {
+      "id": "request-adapter-scheduling",
+      "topic": "distributed-inference",
+      "title": "请求与适配器联合调度",
+      "description": "联合考虑请求负载与适配器位置的调度和迁移。",
+      "papers": ["osdi-2024-dlora"]
+    },
+    {
+      "id": "adapter-multitenancy",
+      "topic": "lora-serving",
+      "title": "多租户适配器管理",
+      "description": "多个 LoRA 适配器共享基础模型时的批处理与资源管理。",
+      "papers": ["acl-2025-mobilora", "osdi-2024-dlora", "mobisys-2025-edgelora"]
+    },
+    {
+      "id": "kv-cache-quantization",
+      "topic": "kv-cache",
+      "title": "KV Cache 量化与压缩",
+      "description": "降低 KV Cache 的存储开销，并结合论文证据记录压缩策略。",
+      "papers": ["acl-2025-mobilora"]
+    },
+    {
+      "id": "kv-cache-delta",
+      "topic": "kv-cache",
+      "title": "KV Cache Delta",
+      "description": "围绕共享 KV 与适配器差分 KV 的表示和复用。",
+      "papers": ["acl-2025-mobilora"]
+    },
+    {
+      "id": "position-independent-kv-reuse",
+      "topic": "kv-cache",
+      "title": "位置无关 KV 复用",
+      "description": "检索片段跨位置复用 KV 状态与恢复注意力信息。",
+      "papers": ["icml-2026-prophetkv"]
+    },
+    {
+      "id": "rag-selective-recompute",
+      "topic": "rag-prefill",
+      "title": "RAG 选择性重计算",
+      "description": "在缓存复用和重新计算之间平衡预填充延迟与生成质量。",
+      "papers": ["icml-2026-prophetkv"]
+    }
+  ],
+  "relatedTopics": [],
+  "relations": []
+}

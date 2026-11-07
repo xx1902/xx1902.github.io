@@ -1,0 +1,129 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Litstar's homepage: research, projects, and learning." data-zh="小星的个人主页：研究方向、项目与学习记录。" data-en="Litstar's homepage: research, projects, and learning.">
+    <title>Litstar | Personal homepage</title>
+    <link rel="icon" type="image/png" sizes="512x512" href="/assets/images/favicon-chestnut.png?v=chestnut-b-2">
+    <link rel="stylesheet" href="/assets/css/site.css">
+    <script src="/assets/js/locale.js" defer></script>
+    <script src="/assets/js/home.js" defer></script>
+    <script src="/assets/js/research.js" defer></script>
+</head>
+<body class="profile-page">
+    <a class="skip-link" href="#about" data-zh="跳至正文" data-en="Skip to content">Skip to content</a>
+    <header class="site-header home-header">
+        <a class="brand" href="/">Litstar<span class="brand-dot">.</span></a>
+        <nav class="home-section-nav" aria-label="Homepage sections" data-aria-zh="个人主页栏目" data-aria-en="Homepage sections">
+            <a href="#about" data-home-view="about" class="active" aria-current="page" data-zh="关于" data-en="About">About</a>
+            <a href="#research" data-home-view="research" data-zh="研究" data-en="Research">Research</a>
+            <a href="#projects" data-home-view="projects" data-zh="项目与技术栈" data-en="Projects & stack">Projects &amp; stack</a>
+            <a href="#cv" data-home-view="cv" data-zh="简历" data-en="CV">CV</a>
+        </nav>
+        <button id="language-toggle" class="language-toggle" type="button" aria-label="Switch to Chinese">中文</button>
+    </header>
+    <div class="academic-layout">
+        <aside class="profile-sidebar">
+            <img class="profile-avatar" src="/assets/images/avatar.jpg" alt="Litstar's avatar" data-alt-zh="小星的头像" data-alt-en="Litstar's avatar" width="164" height="164">
+            <p class="profile-display-name" data-zh="小星" data-en="Litstar">Litstar</p>
+            <p class="profile-role" data-zh="大模型推理优化 · 后端工程" data-en="LLM inference · backend engineering">LLM inference · backend engineering</p>
+            <p class="profile-caption" data-zh="华东师范大学在读研究生" data-en="Graduate student at East China Normal University">Graduate student at East China Normal University</p>
+            <div class="social-links">
+                <a href="https://github.com/xx1902" target="_blank" rel="noreferrer">GitHub <span aria-hidden="true">↗</span></a>
+                <a href="https://qm.qq.com/q/YIz52pv8Gs" target="_blank" rel="noreferrer">QQ <span aria-hidden="true">↗</span></a>
+            </div>
+            <nav class="sidebar-library" aria-label="Knowledge library" data-aria-zh="知识库" data-aria-en="Knowledge library">
+                <p class="eyebrow" data-zh="阅读与学习" data-en="READING & LEARNING">READING &amp; LEARNING</p>
+                <a href="/paper/"><span data-zh="论文索引" data-en="Paper library">Paper library</span><span aria-hidden="true">↗</span></a>
+                <a href="/study/"><span data-zh="学习笔记" data-en="Study notes">Study notes</span><span aria-hidden="true">↗</span></a>
+            </nav>
+        </aside>
+        <main class="profile-content" id="main-content">
+            <section id="home-about" class="about-section home-view" data-home-view="about">
+                <p class="eyebrow" data-zh="关于我" data-en="ABOUT">ABOUT</p>
+                <h1 data-zh="你好，我是小星。" data-en="Hi, I'm Litstar.">Hi, I'm Litstar.</h1>
+                <p class="lead" data-zh="目前在华东师范大学攻读研究生，师从吴旭东老师，关注大模型推理系统与高效服务。" data-en="I'm a graduate student at East China Normal University, advised by Xudong Wu. My interests lie in LLM inference systems and efficient serving.">I'm a graduate student at East China Normal University, advised by Xudong Wu. My interests lie in LLM inference systems and efficient serving.</p>
+                <p data-zh="本科毕业于河海大学。喜欢从实际问题出发，把论文中的想法放进代码里验证，记录源码线索、实验过程与仍待解决的问题。" data-en="I completed my undergraduate studies at Hohai University. I enjoy turning ideas from papers into code and keeping track of implementation details, experiments, and open questions.">I completed my undergraduate studies at Hohai University. I enjoy turning ideas from papers into code and keeping track of implementation details, experiments, and open questions.</p>
+                <h3 data-zh="当前关注" data-en="Current interests">Current interests</h3>
+                <div id="home-entry-1" class="tag-row interest-tags"><span class="tag" data-zh="多 LoRA 并行" data-en="Multi-LoRA serving">Multi-LoRA serving</span><span class="tag" data-zh="KV 缓存优化" data-en="KV cache optimization">KV cache optimization</span><span class="tag" data-zh="推理加速" data-en="Inference acceleration">Inference acceleration</span></div>
+            </section>
+            <section id="home-research" class="home-view home-research-view" data-home-view="research" hidden><p class="eyebrow" data-zh="研究" data-en="RESEARCH">RESEARCH</p>
+<h1 data-zh="高效大模型推理" data-en="Efficient LLM inference">Efficient LLM inference</h1>
+<nav class="research-view-nav" aria-label="Research views" data-aria-zh="研究栏目" data-aria-en="Research views">
+    <a href="#research-directions" data-research-view="directions" class="active" aria-current="page" data-zh="研究方向" data-en="Directions">Directions</a>
+    <a href="#research-progress" data-research-view="progress" data-zh="进展" data-en="Progress">Progress</a>
+    <a href="#research-papers" data-research-view="papers" data-zh="已读论文" data-en="Reading log">Reading log</a>
+</nav>
+<section class="research-subview" id="panel-directions" data-research-panel="directions">
+    <article id="research-entry-1" class="direction-row" data-direction-id="multi-lora"><span class="direction-number">01</span><div><h2 data-zh="多 LoRA 并行服务" data-en="Concurrent multi-LoRA serving">Concurrent multi-LoRA serving</h2><p data-zh="关注多个 LoRA 适配器的并发推理、批处理与调度，在共享基础模型的同时兼顾吞吐、延迟与资源利用率。" data-en="Concurrent inference, batching, and scheduling for multiple LoRA adapters, balancing throughput, latency, and resource utilization over a shared base model.">Concurrent inference, batching, and scheduling for multiple LoRA adapters, balancing throughput, latency, and resource utilization over a shared base model.</p><div class="tag-row"><span class="tag" data-zh="LoRA" data-en="LoRA">LoRA</span><span class="tag" data-zh="并发调度" data-en="Scheduling">Scheduling</span><span class="tag" data-zh="批处理" data-en="Batching">Batching</span></div></div></article>
+<article id="research-entry-2" class="direction-row" data-direction-id="kv-cache"><span class="direction-number">02</span><div><h2 data-zh="KV 缓存与推理加速" data-en="KV cache &amp; inference acceleration">KV cache &amp; inference acceleration</h2><p data-zh="围绕 KV 缓存管理与复用、显存开销和解码瓶颈，探索降低推理延迟与提升服务效率的方法。" data-en="KV cache management and reuse, memory overhead, and decoding bottlenecks, with a focus on reducing inference latency and improving serving efficiency.">KV cache management and reuse, memory overhead, and decoding bottlenecks, with a focus on reducing inference latency and improving serving efficiency.</p><div class="tag-row"><span class="tag" data-zh="KV cache" data-en="KV cache">KV cache</span><span class="tag" data-zh="显存优化" data-en="Memory efficiency">Memory efficiency</span><span class="tag" data-zh="推理加速" data-en="Acceleration">Acceleration</span></div></div></article>
+</section>
+<section class="research-subview" id="panel-progress" data-research-panel="progress" hidden>
+    <div class="section-heading"><h2 data-zh="进展" data-en="Progress">Progress</h2><button type="button" id="edit-progress" hidden data-zh="编辑进展" data-en="Edit progress">Edit progress</button></div>
+    <div class="progress-filters" role="group" aria-label="Progress status" data-aria-zh="进展状态" data-aria-en="Progress status">
+        <button type="button" data-progress-filter="all" aria-pressed="true" data-zh="全部" data-en="All">All</button>
+        <button type="button" data-progress-filter="active" aria-pressed="false" data-zh="进行中" data-en="In progress">In progress</button>
+        <button type="button" data-progress-filter="planned" aria-pressed="false" data-zh="待开始" data-en="Not started">Not started</button>
+        <button type="button" data-progress-filter="done" aria-pressed="false" data-zh="已完成" data-en="Completed">Completed</button>
+    </div>
+    <p id="progress-feedback" class="small muted" role="status"></p>
+    <div id="progress-list" class="research-tasks"></div>
+    <div id="progress-edit-actions" class="editor-actions" hidden><button type="button" id="add-progress" data-zh="新增进展" data-en="Add task">Add task</button><button type="button" id="save-progress" data-zh="保存到本地" data-en="Save to local files">Save to local files</button><button type="button" id="cancel-progress" data-zh="取消进展" data-en="Cancel progress">Cancel progress</button></div>
+</section>
+<section class="research-subview" id="panel-papers" data-research-panel="papers" hidden>
+    <div class="section-heading"><h2 data-zh="已读论文" data-en="Reading log">Reading log</h2><a class="text-link" href="/paper/#notes" data-zh="打开论文库 ↗" data-en="Open paper library ↗">Open paper library ↗</a></div>
+    <div id="research-paper-list"></div>
+</section>
+</section>
+            <section id="home-projects" class="home-view" data-home-view="projects" hidden>
+                <p class="eyebrow" data-zh="构建与实践" data-en="BUILD & PRACTICE">BUILD &amp; PRACTICE</p>
+                <h1 data-zh="项目与技术栈" data-en="Projects & stack">Projects &amp; stack</h1>
+                <nav class="bookmark-bar" aria-label="Bookmarks" data-aria-zh="工具收藏" data-aria-en="Bookmarks">
+                    <span class="bookmark-label" data-zh="工具收藏" data-en="Bookmarks">Bookmarks</span>
+                    <div class="bookmark-links"><a href="https://www.toolhelper.cn/" target="_blank" rel="noreferrer"><span data-zh="格式化与开发工具" data-en="Formatting and developer tools">Formatting and developer tools</span><span aria-hidden="true">↗</span></a>
+<a href="https://www.ilovepdf.com/zh-cn" target="_blank" rel="noreferrer"><span data-zh="PDF 工具" data-en="PDF tools">PDF tools</span><span aria-hidden="true">↗</span></a>
+<a href="https://www.iloveimg.com/zh-cn" target="_blank" rel="noreferrer"><span data-zh="图片工具" data-en="Image tools">Image tools</span><span aria-hidden="true">↗</span></a>
+<a href="https://bz.zzzmh.cn/index" target="_blank" rel="noreferrer"><span data-zh="壁纸网站" data-en="Wallpapers">Wallpapers</span><span aria-hidden="true">↗</span></a>
+<a href="https://www.emojiall.com/zh-hans/list" target="_blank" rel="noreferrer"><span data-zh="表情符号列表" data-en="Emoji list">Emoji list</span><span aria-hidden="true">↗</span></a>
+<a href="https://www.iconfont.cn/" target="_blank" rel="noreferrer"><span data-zh="矢量图标库" data-en="Vector icon library">Vector icon library</span><span aria-hidden="true">↗</span></a>
+<a href="https://www.polebrief.com/" target="_blank" rel="noreferrer"><span data-zh="简历制作" data-en="Resume builder">Resume builder</span><span aria-hidden="true">↗</span></a>
+<a href="https://zh.z-library.sk/" target="_blank" rel="noreferrer"><span data-zh="电子书入口" data-en="E-book portal">E-book portal</span><span aria-hidden="true">↗</span></a>
+<a href="https://www.latexlive.com/home" target="_blank" rel="noreferrer"><span data-zh="公式编辑器" data-en="LaTeX formula editor">LaTeX formula editor</span><span aria-hidden="true">↗</span></a>
+<a href="https://ezgif.com/" target="_blank" rel="noreferrer"><span data-zh="动图编辑工具" data-en="GIF editing tools">GIF editing tools</span><span aria-hidden="true">↗</span></a></div>
+                </nav>
+                <div id="home-entry-2" class="project-row"><img src="/assets/images/project1.jpg" alt="Personal blog image" data-alt-zh="个人博客项目图片" data-alt-en="Personal blog image" width="140" height="92" loading="lazy"><div><h3><a href="https://xx1902.github.io/litstar/" target="_blank" rel="noreferrer" data-zh="小星个人博客 ↗" data-en="Litstar's blog ↗">Litstar's blog ↗</a></h3><p data-zh="技术文章、工程实践与生活记录。" data-en="Technical writing, engineering practice, and everyday notes.">Technical writing, engineering practice, and everyday notes.</p><a class="text-link" href="https://github.com/xx1902" target="_blank" rel="noreferrer" data-zh="GitHub 上的更多项目 ↗" data-en="More projects on GitHub ↗">More projects on GitHub ↗</a></div></div>
+                <section class="stack-section" id="project-stack">
+                    <h2 data-zh="技术栈" data-en="Technical stack">Technical stack</h2>
+                    <dl id="home-entry-3" class="skill-definitions">
+                        <div id="home-entry-4"><dt data-zh="编程语言" data-en="Languages">Languages</dt><dd>C++ · Java · JavaScript</dd></div>
+                        <div id="home-entry-5"><dt data-zh="后端开发" data-en="Backend">Backend</dt><dd>Spring Boot · WebSocket · Redis</dd></div>
+                        <div id="home-entry-6"><dt data-zh="前端开发" data-en="Frontend">Frontend</dt><dd>Vue · HTML · CSS</dd></div>
+                        <div id="home-entry-7"><dt data-zh="大模型应用" data-en="LLM applications">LLM applications</dt><dd data-zh="微调与部署 · 智能体 · MCP" data-en="Fine-tuning & deployment · agents · MCP">Fine-tuning &amp; deployment · agents · MCP</dd></div>
+                        <div id="home-entry-8"><dt data-zh="工程环境" data-en="Engineering">Engineering</dt><dd>Linux · Docker · Git</dd></div>
+                    </dl>
+                </section>
+            </section>
+            <section id="home-cv" class="home-view" data-home-view="cv" hidden>
+                <p class="eyebrow" data-zh="学习与经历" data-en="BACKGROUND">BACKGROUND</p>
+                <h1 data-zh="简历" data-en="Curriculum vitae">Curriculum vitae</h1>
+                <section id="home-entry-9" class="cv-section">
+                    <h2 data-zh="教育经历" data-en="Education">Education</h2>
+                    <article id="home-entry-10" class="education-row"><div><h3 data-zh="华东师范大学" data-en="East China Normal University">East China Normal University</h3><p data-zh="研究生在读 · 导师：吴旭东老师" data-en="Graduate studies · Advisor: Xudong Wu">Graduate studies · Advisor: Xudong Wu</p></div><time data-zh="2026—2029（预计）" data-en="2026–2029 (expected)">2026–2029 (expected)</time></article>
+                    <article id="home-entry-11" class="education-row"><div><h3 data-zh="河海大学" data-en="Hohai University">Hohai University</h3><p data-zh="本科毕业 · 河海大学优秀毕业生" data-en="Undergraduate degree · Outstanding Graduate">Undergraduate degree · Outstanding Graduate</p></div></article>
+                </section>
+                <section id="home-entry-12" class="cv-section"><h2 data-zh="奖学金与荣誉" data-en="Scholarships & honors">Scholarships &amp; honors</h2>
+                    <ul id="home-entry-13" class="cv-list"><li id="home-entry-14" data-zh="本科生国家奖学金" data-en="National Scholarship for undergraduates">National Scholarship for undergraduates</li><li id="home-entry-15" data-zh="本科期间累计获十余次奖学金" data-en="More than ten scholarship awards during undergraduate studies">More than ten scholarship awards during undergraduate studies</li><li id="home-entry-16" data-zh="河海大学优秀班长" data-en="Outstanding Class Monitor, Hohai University">Outstanding Class Monitor, Hohai University</li></ul>
+                </section>
+                <section id="home-entry-17" class="cv-section"><h2 data-zh="竞赛获奖" data-en="Selected competitions">Selected competitions</h2>
+                    <ul id="home-entry-18" class="cv-list"><li id="home-entry-19" data-zh="“中国软件杯”大学生软件设计大赛 · 全国三等奖" data-en="China Software Cup, National College Student Software Design Competition · National Third Prize">China Software Cup, National College Student Software Design Competition · National Third Prize</li><li id="home-entry-20" data-zh="蓝桥杯全国软件和信息技术专业人才大赛 · C++ 组江苏省二等奖（多次）" data-en="Lanqiao Cup · C++, Jiangsu Provincial Second Prize (multiple awards)">Lanqiao Cup · C++, Jiangsu Provincial Second Prize (multiple awards)</li><li id="home-entry-21" data-zh="全国大学生数学建模竞赛 · 江苏赛区一等奖" data-en="China Undergraduate Mathematical Contest in Modeling · Jiangsu First Prize">China Undergraduate Mathematical Contest in Modeling · Jiangsu First Prize</li></ul>
+                </section>
+                <section id="home-entry-22" class="cv-section"><h2 data-zh="学生工作与社会实践" data-en="Leadership & service">Leadership &amp; service</h2>
+                    <ul id="home-entry-23" class="cv-list"><li id="home-entry-24" data-zh="班长、学习委员" data-en="Class Monitor and Academic Representative">Class Monitor and Academic Representative</li><li id="home-entry-25" data-zh="计算机学院电子技术部副部长" data-en="Deputy Head, Electronic Technology Department, School of Computer Science">Deputy Head, Electronic Technology Department, School of Computer Science</li><li id="home-entry-26" data-zh="暑期“三下乡”智慧水利调研 · 优秀团队" data-en="Summer rural outreach: smart water conservancy research · Outstanding Team">Summer rural outreach: smart water conservancy research · Outstanding Team</li></ul>
+                </section>
+            </section>
+        </main>
+    </div>
+    <footer class="site-footer"><span data-zh="© 2026 小星" data-en="© 2026 Litstar">© 2026 Litstar</span></footer>
+</body>
+</html>

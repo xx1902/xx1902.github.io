@@ -1,0 +1,109 @@
+{
+  "updatedAt": "2026-10-23T00:00:00+08:00",
+  "tasks": [
+    {
+      "id": "multi-lora",
+      "title": {
+        "zh": "多 LoRA 并行服务",
+        "en": "Concurrent multi-LoRA serving"
+      },
+      "note": {
+        "zh": "整理相关论文与实现线索，后续补充具体目标和进度。",
+        "en": "Collect relevant papers and implementation pointers; specific milestones are pending."
+      },
+      "status": "planned",
+      "percent": 0
+    },
+    {
+      "id": "kv-cache",
+      "title": {
+        "zh": "KV 缓存与推理加速",
+        "en": "KV cache & inference acceleration"
+      },
+      "note": {
+        "zh": "围绕缓存管理与解码瓶颈整理研究问题，尚未填写实际进度。",
+        "en": "Define questions around cache management and decoding bottlenecks; actual progress is not recorded yet."
+      },
+      "status": "planned",
+      "percent": 0
+    },
+    {
+      "id": "spring-vue",
+      "title": {
+        "zh": "Spring Boot 与 Vue 项目",
+        "en": "Spring Boot & Vue project"
+      },
+      "note": {
+        "zh": "沿用原站历史记录 88%，待更新为当前进度。",
+        "en": "Historical snapshot: 88%; awaiting an update to current progress."
+      },
+      "status": "active",
+      "percent": 88
+    },
+    {
+      "id": "agent-mcp",
+      "title": {
+        "zh": "大模型智能体与 MCP 实践",
+        "en": "LLM agents & MCP practice"
+      },
+      "note": {
+        "zh": "沿用原站历史记录 40%，待更新为当前进度。",
+        "en": "Historical snapshot: 40%; awaiting an update to current progress."
+      },
+      "status": "active",
+      "percent": 40
+    },
+    {
+      "id": "linux",
+      "title": {
+        "zh": "Linux 课程",
+        "en": "Linux course"
+      },
+      "note": {
+        "zh": "沿用原站历史记录 35%，待更新为当前进度。",
+        "en": "Historical snapshot: 35%; awaiting an update to current progress."
+      },
+      "status": "active",
+      "percent": 35
+    },
+    {
+      "id": "csapp",
+      "title": {
+        "zh": "计算机系统实验",
+        "en": "Computer systems labs"
+      },
+      "note": {
+        "zh": "沿用原站历史记录 16%，待更新为当前进度。",
+        "en": "Historical snapshot: 16%; awaiting an update to current progress."
+      },
+      "status": "active",
+      "percent": 16
+    },
+    {
+      "id": "homepage",
+      "title": {
+        "zh": "个人主页初版搭建",
+        "en": "Initial personal homepage"
+      },
+      "note": {
+        "zh": "原站标记完成于 2025 年 5 月 17—18 日。",
+        "en": "Marked complete in the original log, May 17–18, 2025."
+      },
+      "status": "done",
+      "percent": 100
+    },
+    {
+      "id": "outsourcing-project",
+      "title": {
+        "zh": "服务外包项目",
+        "en": "Service outsourcing project"
+      },
+      "note": {
+        "zh": "原站标记完成；记录周期为 2025 年 2 月 5 日至 4 月 15 日。",
+        "en": "Marked complete in the original log; recorded period: February 5–April 15, 2025."
+      },
+      "status": "done",
+      "percent": 100
+    }
+  ]
+}

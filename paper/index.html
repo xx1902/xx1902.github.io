@@ -1,0 +1,108 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Litstar 的论文索引与阅读笔记。">
+    <title>Paper · 论文索引 | Litstar</title>
+    <link rel="icon" type="image/png" sizes="512x512" href="/assets/images/favicon-chestnut.png?v=chestnut-b-2">
+    <link rel="stylesheet" href="/assets/css/site.css">
+    <link rel="stylesheet" href="/assets/css/paper.css">
+    <link rel="stylesheet" href="/paper/notes/assets/library-ui.css">
+    <link rel="stylesheet" href="/paper/notes/assets/katex/katex.min.css">
+    <link rel="stylesheet" href="/paper/notes/assets/markdown-light.css">
+    <script src="/assets/js/workspace.js" defer></script>
+    <script src="/paper/notes/assets/local-note-path.js" defer></script>
+    <script src="/paper/notes/assets/library-ui.js" defer></script>
+    <script type="module" src="/paper/notes/assets/markdown-light.js"></script>
+    <script src="/assets/vendor/lucide.min.js" defer></script>
+    <script type="module" src="/assets/js/paper-graph.mjs"></script>
+</head>
+<body id="top" class="collection-workspace" data-section="paper" data-index="/paper/data/papers.json" data-local-note-root="D:\Blog\xx1902.github.io\">
+    <header class="site-header workspace-header"><a class="brand" href="/paper/">Paper<span class="brand-dot">.</span></a><span class="workspace-owner">Litstar / 论文工作台</span><nav class="site-nav" aria-label="论文工作台导航"><a href="#map" data-workspace-view="map">知识图谱</a><a href="/paper/#notes" data-workspace-filter data-workspace-view="notes">全部文献</a><a href="#workflow" data-workspace-view="workflow">阅读与实验</a></nav></header>
+    <main class="research-shell">
+        <section id="map" class="knowledge-section" data-workspace-panel="map" aria-labelledby="map-title">
+            <div class="section-heading"><div><p class="eyebrow">PAPER / KNOWLEDGE GRAPH</p><h1 id="map-title">我的论文知识图谱</h1></div><a class="text-link" href="/paper/#notes" data-workspace-filter>全部文献 ↗</a></div>
+            <p class="research-hero-copy">专题与论文内容由个人持续整理。</p>
+            <div id="paper-graph" class="paper-graph" aria-labelledby="paper-graph-title">
+                <div class="paper-graph-heading">
+                    <h2 id="paper-graph-title">论文知识图谱</h2>
+                    <div class="paper-graph-scopes">
+                        <label><select id="graph-topic" aria-label="图谱专题"><option value="">全部专题</option><option value="edge-inference">端侧推理</option><option value="distributed-inference">分布式推理</option><option value="lora-serving">LoRA 多租户服务</option><option value="kv-cache">KV Cache 复用</option><option value="rag-prefill">RAG 预填充优化</option></select></label>
+                        <label><select id="graph-direction" aria-label="图谱具体方向"><option value="">全部具体方向</option></select></label>
+                    </div>
+                    <div class="paper-graph-tools" role="group" aria-label="三维图谱视角">
+                        <button type="button" data-graph-action="rotate" aria-label="自动旋转" aria-pressed="false" title="自动旋转"><i data-lucide="rotate-3d"></i></button>
+                        <button type="button" data-graph-action="in" aria-label="放大" title="放大"><i data-lucide="zoom-in"></i></button>
+                        <button type="button" data-graph-action="out" aria-label="缩小" title="缩小"><i data-lucide="zoom-out"></i></button>
+                        <button type="button" data-graph-action="reset" aria-label="重置视角" title="重置视角"><i data-lucide="scan"></i></button>
+                    </div>
+                </div>
+                <div class="paper-graph-stage" id="paper-graph-stage">
+                    <p class="paper-graph-loading" role="status">正在加载论文关系…</p>
+                    <div class="paper-graph-labels" id="paper-graph-labels"></div>
+                </div>
+                <div class="paper-graph-footer">
+                <div class="paper-graph-legend" aria-label="节点类型"><span class="legend-root">研究主线</span><span class="legend-topic">专题</span><span class="legend-direction">具体方向</span><span class="legend-paper">论文</span></div>
+                    <a id="paper-graph-selection" class="paper-graph-selection" href="/paper/#notes" data-workspace-filter>全部文献 ↗</a>
+                </div>
+                <div id="paper-graph-fallback" class="paper-graph-fallback" hidden></div>
+                <p id="paper-graph-context" class="paper-graph-context" aria-live="polite">专题名称会跳转到对应的文献索引。</p>
+            </div>
+            <div class="paper-topic-directory"><article class="paper-topic-item" data-map-topic="edge-inference"><h2><a href="/paper/?topic=edge-inference#notes" data-workspace-filter>端侧推理</a></h2><p>设备内存、功耗与异构硬件约束下的模型推理。</p></article><article class="paper-topic-item" data-map-topic="distributed-inference"><h2><a href="/paper/?topic=distributed-inference#notes" data-workspace-filter>分布式推理</a></h2><p>多副本、多 GPU 的请求调度、负载均衡与状态迁移。</p></article><article class="paper-topic-item" data-map-topic="lora-serving"><h2><a href="/paper/?topic=lora-serving#notes" data-workspace-filter>LoRA 多租户服务</a></h2><p>共享基础模型时的适配器选择、批处理、缓存与资源管理。</p></article><article class="paper-topic-item" data-map-topic="kv-cache"><h2><a href="/paper/?topic=kv-cache#notes" data-workspace-filter>KV Cache 复用</a></h2><p>缓存共享、增量编码、保留策略与跨文档注意力恢复。</p></article><article class="paper-topic-item" data-map-topic="rag-prefill"><h2><a href="/paper/?topic=rag-prefill#notes" data-workspace-filter>RAG 预填充优化</a></h2><p>在检索长上下文中选择性重算，平衡首 token 延迟与生成质量。</p></article></div>
+        </section>
+        <section class="research-section" id="notes" data-workspace-panel="notes" hidden>
+            <div class="paper-library-heading"><div><p class="eyebrow">PAPER / LIBRARY</p><h1>全部文献</h1><nav class="venue-resources" aria-label="会议论文发布入口"><span class="venue-resources-label">论文发布</span><a href="https://icml.cc/virtual/2026/papers.html" data-venue-resource="ICML" target="_blank" rel="noopener noreferrer" title="ICML 2026 官方论文浏览入口与 PMLR 论文集">ICML <span aria-hidden="true">↗</span></a><a href="https://aclanthology.org/events/acl-2025/" data-venue-resource="ACL" target="_blank" rel="noopener noreferrer" title="ACL 2025 长文论文集与正式出版记录">ACL <span aria-hidden="true">↗</span></a><a href="https://www.usenix.org/conference/osdi24" data-venue-resource="OSDI" target="_blank" rel="noopener noreferrer" title="USENIX OSDI 2024 会议与论文发布页面">OSDI <span aria-hidden="true">↗</span></a><a href="https://sigmobile.org/mobisys/2025/accepted_papers/" data-venue-resource="MobiSys" target="_blank" rel="noopener noreferrer" title="MobiSys 2025 官方录用论文列表与会议入口">MobiSys <span aria-hidden="true">↗</span></a></nav></div><div class="stats-panel" aria-label="笔记统计">
+    <div class="stat"><strong id="paper-count">0</strong><span>篇文献</span></div>
+    <div class="stat"><strong id="tag-count">0</strong><span>个专题</span></div>
+    <div class="stat"><strong id="year-count">0</strong><span>已阅读（含精读）</span></div>
+    <div class="stat"><strong id="read-count">0</strong><span>精读</span></div>
+</div>
+</div>
+            <div class="research-toolbar">
+    <label class="search-box"><span class="sr-only">搜索论文标题、作者、关键词与全文</span><input id="search-input" type="search" placeholder="搜索论文标题、作者、关键词或正文…" autocomplete="off"></label>
+    <button id="reset-filters" class="reset-filters" type="button" aria-label="清空搜索和筛选" title="清空搜索和筛选">×</button>
+    <div class="filter-row">
+        <label>专题<select id="topic-filter" aria-label="按专题筛选"><option value="">全部专题</option><option value="edge-inference">端侧推理</option><option value="distributed-inference">分布式推理</option><option value="lora-serving">LoRA 多租户服务</option><option value="kv-cache">KV Cache 复用</option><option value="rag-prefill">RAG 预填充优化</option></select></label>
+        <label>具体方向<select id="category-filter" aria-label="按具体方向筛选"><option value="">全部方向</option></select></label>
+        <label>会议 / 来源<select id="venue-filter" aria-label="按会议或来源筛选"><option value="">全部会议 / 来源</option></select></label>
+        <label>阅读情况<select id="status-filter" aria-label="按阅读情况筛选"><option value="">全部阅读情况</option></select></label>
+        <label>优先级<select id="priority-filter" aria-label="按优先级筛选"><option value="">全部优先级</option></select></label>
+        <label>时间<select id="year-filter" aria-label="按年份筛选"><option value="">全部年份</option></select></label>
+    </div>
+</div>
+<p id="result-count" class="result-count" aria-live="polite"></p>
+<div class="note-layout">
+    <div id="note-list" class="note-list" aria-live="polite"></div>
+    <aside id="note-detail" class="note-detail" aria-live="polite"><p class="detail-empty">选择一篇论文，查看小结。</p></aside>
+</div>
+<noscript><p class="empty-state">请启用 JavaScript 查看和检索笔记。</p></noscript>
+
+        </section>
+        <section id="workflow" class="research-section workspace-workflow" data-workspace-panel="workflow" hidden>
+            <p class="eyebrow">READ / QUESTION / REPRODUCE</p><h1>阅读与实验</h1>
+            <p class="research-hero-copy">为论文阅读、问题拆解与复现记录提供统一入口。</p>
+            
+            <div class="reading-workbench">
+                <section class="reading-queue"><div class="section-heading"><h2>精读档案</h2><a href="?status=精读#notes" data-workspace-filter class="text-link">全部精读 ↗</a></div><div id="deep-reading-queue"><p class="section-note">正在读取精读记录…</p></div></section>
+            </div>
+            <section class="experiment-guide"><p class="eyebrow">EXPERIMENT / EVIDENCE</p><h2>实验记录框架</h2>
+                <div class="experiment-columns">
+                    <div><h3>问题定义</h3><p>记录要回答的问题、研究假设与适用范围。</p><ul><li>目标与约束</li><li>判断标准</li><li>预期差异</li></ul></div>
+                    <div><h3>实验设置</h3><p>保留能够复现实验的环境、参数和对照条件。</p><ul><li>环境与依赖</li><li>基线和变量</li><li>数据与运行命令</li></ul></div>
+                    <div><h3>结果与分析</h3><p>记录实际观察、证据来源、失败现象和结论边界。</p><ul><li>原始日志</li><li>结果与对照</li><li>局限与下一步</li></ul></div>
+                </div>
+            </section>
+            <div class="reading-protocol"><span>待阅读</span><span aria-hidden="true">→</span><span>已阅读 · 留下小结</span><span aria-hidden="true">→</span><span>精读 · 拆解方法与实验</span></div>
+        </section>
+    </main>
+    <dialog id="paper-venue-dialog" class="paper-venue-dialog" aria-labelledby="paper-venue-title">
+        <header class="paper-venue-header">
+            <div><p class="eyebrow">论文发布</p><h2 id="paper-venue-title">会议论文集</h2></div>
+            <form method="dialog"><button type="submit" aria-label="关闭会议论文集" title="关闭"><i data-lucide="x"></i></button></form>
+        </header>
+        <div id="paper-venue-content" class="paper-venue-content"></div>
+    </dialog>
+    <footer class="site-footer"><a class="quiet-home-link" href="/">← Litstar · 个人主页</a><span>Paper / 独立整理空间</span></footer>
+</body>
+</html>

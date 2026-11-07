@@ -1,0 +1,312 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Litstar 的 AI 知识图谱、学习笔记与职业方向。">
+    <title>Study · 学习笔记 | Litstar</title>
+    <link rel="icon" type="image/png" sizes="512x512" href="/assets/images/favicon-chestnut.png?v=chestnut-b-2">
+    <link rel="stylesheet" href="/assets/css/site.css">
+    <link rel="stylesheet" href="/assets/css/study.css">
+    <script src="/assets/vendor/cytoscape.min.js" defer></script>
+    <script src="/assets/vendor/lucide.min.js" defer></script>
+    <script src="/assets/js/workspace.js" defer></script>
+    <script src="/assets/js/library.js" defer></script>
+    <script type="module" src="/assets/js/study.js"></script>
+</head>
+<body id="top" class="collection-workspace study-workspace" data-section="study" data-index="/study/data/notes.json">
+    <header class="site-header workspace-header"><a class="brand" href="/study/">Study<span class="brand-dot">.</span></a><span class="workspace-owner">Litstar / 学习工作台</span><nav class="site-nav" aria-label="学习工作台导航"><a href="#map" data-workspace-view="map">知识图谱</a><a href="/study/#notes" data-workspace-filter data-workspace-view="notes">全部笔记</a><a href="#workflow" data-workspace-view="workflow">职业方向</a></nav></header>
+    <main class="research-shell">
+        <section id="map" class="study-map-view" data-workspace-panel="map" aria-labelledby="map-title">
+            <div class="section-heading study-heading"><div class="study-heading-copy"><p class="eyebrow">KNOWLEDGE / CONNECTIONS / PRACTICE</p><h1 id="map-title">我的 AI 知识图谱</h1><p class="section-note">模型如何训练、推理与落地，以及我现在走到了哪里。</p></div><div class="study-heading-actions"><div id="knowledge-editor-actions" class="study-section-actions"></div><span class="study-caption">个人自评 · 非能力认证</span></div></div>
+            <div id="mastery-overview" class="mastery-overview" aria-label="全部知识点及专题掌握度"></div>
+            <div id="mastery-legend" class="mastery-legend" aria-label="掌握程度图例"></div>
+            <div id="direction-overview" class="direction-overview" aria-label="具体方向掌握度" hidden></div>
+            <div class="graph-layout">
+                <div class="graph-surface">
+                    <div id="study-graph" role="img" aria-label="AI 知识关系图；下方知识点列表提供可键盘访问的同等内容"></div>
+                    <p id="graph-message" class="graph-message" role="status"></p>
+                </div>
+                <div class="graph-stage-actions">
+                    <div class="graph-commands" aria-label="图谱缩放">
+                        <button type="button" data-graph-command="zoom-in" title="放大图谱" aria-label="放大图谱"><i data-lucide="zoom-in"></i></button>
+                        <button type="button" data-graph-command="zoom-out" title="缩小图谱" aria-label="缩小图谱"><i data-lucide="zoom-out"></i></button>
+                    </div>
+                </div>
+                <aside id="knowledge-detail" class="knowledge-detail" aria-live="polite">
+                    <p class="eyebrow">KNOWLEDGE NODE</p><h2>LoRA</h2><p class="section-note">正在加载知识关系…</p>
+                </aside>
+            </div>
+            <div class="graph-footnote"><p><span class="relation-key relation-solid"></span>前置基础 / 组成 <span class="relation-key relation-dashed"></span>组合 / 工程支撑</p><p id="mastery-storage" role="status">掌握度来自 knowledge.json 默认值</p></div>
+            <div class="knowledge-reference-band">
+                <section class="knowledge-sources" aria-labelledby="knowledge-sources-title">
+                    <div class="section-heading knowledge-sources-heading">
+                        <h2 id="knowledge-sources-title">原始资料与概念来源</h2>
+                        <div id="knowledge-source-editor-actions" class="study-section-actions"></div>
+                    </div>
+                    <div id="knowledge-sources"></div>
+                </section>
+                <section class="knowledge-list" aria-labelledby="knowledge-list-title">
+                    <div class="section-heading knowledge-list-heading">
+                        <div><h2 id="knowledge-list-title">全部知识点自评</h2></div>
+                        <div id="knowledge-list-editor-actions" class="study-section-actions"></div>
+                    </div>
+                    <details class="knowledge-list-details">
+                        <summary class="knowledge-list-hint">按专题查看当前分数与等级</summary>
+                        <div id="knowledge-list"></div>
+                    </details>
+                </section>
+            </div>
+            <section class="study-architecture" aria-labelledby="architecture-title">
+                <div class="section-heading"><h2 id="architecture-title">把知识放回真实链路</h2><div id="architecture-actions" class="study-section-actions"></div></div>
+                <div class="architecture-tabs" role="tablist" aria-label="系统结构">
+                    <button id="tab-infra" type="button" role="tab" aria-controls="diagram-infra" aria-selected="true" tabindex="0" data-architecture="infra">AI Infra</button>
+                    <button id="tab-model" type="button" role="tab" aria-controls="diagram-model" aria-selected="false" tabindex="-1" data-architecture="model">模型结构</button>
+                    <button id="tab-alignment" type="button" role="tab" aria-controls="diagram-alignment" aria-selected="false" tabindex="-1" data-architecture="alignment">微调与对齐</button>
+                    <button id="tab-vla" type="button" role="tab" aria-controls="diagram-vla" aria-selected="false" tabindex="-1" data-architecture="vla">多模态 / VLA</button>
+                </div>
+                <div id="diagram-infra" role="tabpanel" aria-labelledby="tab-infra" class="architecture-panel">
+    <h3>一次大模型推理请求</h3>
+    <ol class="system-flow">
+        <li><span>01 / 接入</span><strong>网关与 API</strong><p>鉴权、配额、路由、流式响应</p></li>
+        <li><span>02 / 编排</span><strong>调度与批处理</strong><p>排队、Continuous Batching、资源预算</p></li>
+        <li><span>03 / 执行</span><strong>Prefill → Decode</strong><p>上下文计算、缓存、逐 token 生成</p></li>
+        <li><span>04 / 计算</span><strong>运行时与 GPU</strong><p>算子、显存、通信与硬件</p></li>
+    </ol>
+    <div class="system-lanes">
+        <div><strong>推理优化</strong><p>KV Cache / Prefix Cache · FlashAttention · 量化 · 投机解码</p></div>
+        <div><strong>分布式与资源</strong><p>TP / PP / EP · NCCL · 节点与互联 · Kubernetes</p></div>
+        <div><strong>贯穿全链路</strong><p>正确性 · TTFT / TPOT / 吞吐 / 尾延迟 · 日志与追踪 · 成本</p></div>
+    </div>
+    <p class="section-note">这是职责分层示意，不是固定部署拓扑。只有统一模型、硬件与工作负载后，才比较优化收益。</p>
+</div>
+<div id="diagram-model" role="tabpanel" aria-labelledby="tab-model" class="architecture-panel" hidden>
+    <h3>常见 Decoder-only Transformer</h3>
+    <ol class="system-flow">
+        <li><span>输入</span><strong>Tokenizer / Embedding</strong><p>文本 → token ID → 隐状态</p></li>
+        <li><span>重复 N 层</span><strong>Attention + MLP</strong><p>归一化、位置编码、因果掩码与残差</p></li>
+        <li><span>输出</span><strong>LM Head</strong><p>隐藏状态 → 词表 logits</p></li>
+        <li><span>生成循环</span><strong>采样 → 下一个 Token</strong><p>更新序列，进入下一轮 Decode</p></li>
+    </ol>
+    <div class="system-lanes">
+        <div><strong>KV Cache</strong><p>复用历史 K/V；不是复用全部隐藏状态。</p></div>
+        <div><strong>LoRA</strong><p>在选定线性层引入低秩增量；部署时是否合并取决于具体实现。</p></div>
+        <div><strong>架构变体</strong><p>GQA / MQA、MoE、位置编码和归一化实现可能不同。</p></div>
+    </div>
+</div>
+<div id="diagram-alignment" role="tabpanel" aria-labelledby="tab-alignment" class="architecture-panel" hidden>
+    <h3>能力适配与反馈优化</h3>
+    <ol class="system-flow">
+        <li><span>基座</span><strong>预训练模型</strong><p>先固定模型版本与基线</p></li>
+        <li><span>监督信号</span><strong>SFT / LoRA / QLoRA</strong><p>训练目标与参数更新方式是两个维度</p></li>
+        <li><span>可选后训练</span><strong>偏好 / 奖励优化</strong><p>RLHF、PPO、GRPO 等路线分别验证</p></li>
+        <li><span>闭环</span><strong>评测与部署</strong><p>质量、安全、泛化、资源与延迟</p></li>
+    </ol>
+    <p class="section-note">并非所有模型都必须经过这些步骤；蒸馏是另一种训练信号来源，投机解码则是推理时的执行策略。</p>
+</div>
+<div id="diagram-vla" role="tabpanel" aria-labelledby="tab-vla" class="architecture-panel" hidden>
+    <h3>视觉语言表示到动作</h3>
+    <ol class="system-flow">
+        <li><span>观察与目标</span><strong>图像 + 语言指令</strong><p>部分实现还接收机器人状态或历史</p></li>
+        <li><span>感知与融合</span><strong>视觉编码 / VLM</strong><p>形成视觉与语言的联合表示</p></li>
+        <li><span>动作建模</span><strong>VLA / 动作头</strong><p>输出动作 token、连续动作或轨迹</p></li>
+        <li><span>环境闭环</span><strong>执行 → 新观察</strong><p>控制、安全约束与任务成功率</p></li>
+    </ol>
+    <p class="section-note">模仿学习与强化学习是可选训练路线，不是所有 VLA 的必经步骤。VLT 的具体含义待确认，不据此推导模型结构。</p>
+</div>
+
+            </section>
+        </section>
+        <section class="research-section" id="notes" data-workspace-panel="notes" hidden>
+            <div class="study-library-heading">
+                <div class="study-library-title"><p class="eyebrow">NOTES / LIBRARY</p><h1>全部学习笔记</h1></div>
+                <div class="study-note-stats"><div class="stats-panel" aria-label="笔记统计">
+    <div class="stat"><strong id="paper-count">0</strong><span>篇笔记</span></div>
+    <div class="stat"><strong id="tag-count">0</strong><span>个标签</span></div>
+    <div class="stat"><strong id="year-count">0</strong><span>覆盖年份</span></div>
+    <div class="stat"><strong id="read-count">0</strong><span>已完成</span></div>
+</div>
+</div>
+            </div>
+            <p class="section-note" id="example-note" hidden>带「示例」标记的记录不计入个人完成数。</p>
+<div class="research-toolbar">
+    <label class="search-box"><span class="sr-only">搜索学习笔记</span><input id="search-input" type="search" placeholder="搜索标题、关键词或正文…" autocomplete="off"></label>
+    <button id="reset-filters" class="reset-filters" type="button" aria-label="清空搜索和筛选" title="清空搜索和筛选">×</button>
+    <div class="filter-row study-filter-row">
+        <label><span>专题</span><select id="topic-filter" aria-label="按专题筛选"><option value="">全部专题</option><option value="llm-foundations" data-directions="[&quot;模型结构&quot;,&quot;生成机制&quot;]">模型基础</option><option value="adaptation" data-directions="[&quot;参数高效微调&quot;,&quot;强化学习与对齐&quot;]">微调与对齐</option><option value="inference" data-directions="[&quot;推理加速&quot;,&quot;模型压缩&quot;]">大模型推理</option><option value="ai-infra" data-directions="[&quot;推理优化&quot;,&quot;分布式系统&quot;,&quot;平台工程&quot;]">AI Infra</option><option value="llama-cpp" data-directions="[&quot;运行时与源码&quot;,&quot;量化与部署&quot;]">llama.cpp</option><option value="agents" data-directions="[&quot;工具与工作流&quot;,&quot;检索与评测&quot;]">Agent</option><option value="multimodal" data-directions="[&quot;视觉语言&quot;,&quot;具身与动作&quot;,&quot;待确认术语&quot;]">多模态与具身</option></select></label>
+        <label><span>具体方向</span><select id="category-filter" aria-label="按具体方向筛选"><option value="">全部具体方向</option></select></label>
+        <label><span>学习阶段</span><select id="stage-filter" aria-label="按学习阶段筛选"><option value="">全部阶段</option></select></label>
+        <label><span>笔记状态</span><select id="status-filter" aria-label="按笔记状态筛选"><option value="">全部状态</option></select></label>
+        <label><span>标签</span><select id="tag-filter" aria-label="按标签筛选"><option value="">全部标签</option></select></label>
+        <label><span>优先级</span><select id="priority-filter" aria-label="按优先级筛选"><option value="">全部优先级</option></select></label>
+    </div>
+</div>
+<p id="result-count" class="result-count" aria-live="polite"></p>
+<div class="note-layout">
+    <div id="note-list" class="note-list" aria-live="polite"></div>
+    <aside id="note-detail" class="note-detail" aria-live="polite"><p class="detail-empty">选择一篇记录，查看学习笔记。</p></aside>
+</div>
+<noscript><p class="empty-state">请启用 JavaScript 查看和检索笔记。</p></noscript>
+
+        </section>
+        <section id="workflow" class="research-section workspace-workflow study-careers" data-workspace-panel="workflow" hidden>
+            <p class="eyebrow">CAREER / INTERNSHIP / EVIDENCE</p><h1>职业与实习方向</h1>
+            <h2>从 AI Infra 出发，有哪些岗位</h2>
+<p>下面按职责划分投递方向，不按公司名推断具体团队做什么。岗位名称会重叠，应以实际 JD、技术栈和团队边界为准。</p>
+<table>
+<thead>
+<tr>
+<th>方向</th>
+<th>常见检索词</th>
+<th>重点能力</th>
+<th>能展示的作品</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>推理引擎与服务优化</td>
+<td>LLM Inference、推理优化、模型服务</td>
+<td>C++ / Python、Prefill / Decode、缓存、调度、性能剖析</td>
+<td>固定负载下的基准报告、瓶颈定位、可复现改进</td>
+</tr>
+<tr>
+<td>GPU 算子与编译</td>
+<td>CUDA、Triton、Kernel、编译器</td>
+<td>并行计算、访存、数值精度、算子融合、编译流程</td>
+<td>正确性测试、不同形状与精度下的算子对照</td>
+</tr>
+<tr>
+<td>分布式训练与通信</td>
+<td>Distributed Training、NCCL、并行训练</td>
+<td>TP / PP / EP、集合通信、拓扑、容错与检查点</td>
+<td>多卡实验、通信时间分解、扩展性分析</td>
+</tr>
+<tr>
+<td>AI 平台与集群工程</td>
+<td>AI Platform、GPU 调度、MLOps</td>
+<td>Linux、容器、Kubernetes、可观测性、可靠性</td>
+<td>一个可部署、可监控、可回滚的模型服务</td>
+</tr>
+<tr>
+<td>端侧与运行时</td>
+<td>llama.cpp、GGML、端侧推理</td>
+<td>C / C++、量化、CPU / GPU 后端、内存约束</td>
+<td>固定设备上的加载、内存与速度分析</td>
+</tr>
+<tr>
+<td>Agent 工程与应用平台</td>
+<td>Agent、工具平台、RAG、评测</td>
+<td>后端接口、工具权限、检索、状态管理、任务评测</td>
+<td>带评测集、失败分类与成本记录的完整任务链</td>
+</tr>
+<tr>
+<td>多模态与具身系统</td>
+<td>VLM、VLA、机器人学习</td>
+<td>视觉语言、动作表示、数据、控制与安全评测</td>
+<td>仿真任务与闭环评测；不能只展示文本问答</td>
+</tr>
+</tbody></table>
+<h2>目标单位与官方入口</h2>
+<p>这是长期关注清单，不代表这些单位当前都有匹配岗位、实习名额或特定 offer 档位。不要因为公司有大模型业务，就把任意团队等同于 AI Infra。</p>
+<table>
+<thead>
+<tr>
+<th>单位类型</th>
+<th>可关注单位</th>
+<th>在官方入口检索</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>云与大模型平台</td>
+<td>字节跳动、阿里巴巴、腾讯、百度</td>
+<td>推理、分布式、AI 平台、GPU、模型服务</td>
+</tr>
+<tr>
+<td>硬件与计算软件</td>
+<td>NVIDIA、华为</td>
+<td>CUDA、性能工程、编译器、算子、异构计算</td>
+</tr>
+<tr>
+<td>模型实验室与创业团队</td>
+<td>按实际产品和开源项目建立观察清单</td>
+<td>Inference、Serving、Kernel、Research Engineer</td>
+</tr>
+<tr>
+<td>研究与工程实习</td>
+<td>高校实验室、研究院、企业研究团队</td>
+<td>研究助理、系统研发实习、算法工程实习</td>
+</tr>
+</tbody></table>
+<p>官方入口：<a href="https://jobs.bytedance.com/" target="_blank">字节跳动</a> · <a href="https://talent.alibaba.com/" target="_blank">阿里巴巴</a> · <a href="https://careers.tencent.com/" target="_blank">腾讯</a> · <a href="https://talent.baidu.com/" target="_blank">百度</a> · <a href="https://www.nvidia.com/en-us/about-nvidia/careers/" target="_blank">NVIDIA</a> · <a href="https://career.huawei.com/" target="_blank">华为</a></p>
+<h2>我当前适合怎样准备</h2>
+<ul>
+<li><strong>先补基础</strong>：Linux、C++ / Python、计算机体系结构、并行计算和 Transformer 生成链路。LoRA 自评为掌握，不意味着同时掌握推理系统。</li>
+<li><strong>主线建议</strong>：AI Infra → 推理优化。以 vLLM 或 llama.cpp 中的一个可定位问题为起点，保留版本、负载、剖析、改动与回归测试。</li>
+<li><strong>辅助线</strong>：把 Agent 的调用链作为实际工作负载，区分模型耗时、工具耗时和应用层排队。</li>
+<li><strong>分布式线</strong>：有多卡资源后再做通信与并行扩展实验；资源不足时先学习机制，不编造多卡结果。</li>
+<li><strong>投递材料</strong>：一页简历、代码仓库、可复现实验报告、问题复盘。每项结论能对应到日志或测试。</li>
+</ul>
+<h2>薪资、SP 与 SSP 怎么记录</h2>
+<p>“薪资分布”需要同一年、同地区、同岗位、同身份的样本。当前没有个人 offer 或可信的同口径样本，因此不在这里填一个看似精确的市场范围。</p>
+<p>部分校招讨论把 <strong>SP / SSP</strong> 用作高于常规档的 offer 称呼，但它们不是跨公司统一等级；不能仅凭名称判断薪资、职级或录用门槛。也不要把实习日薪和校招年包混在一起。</p>
+<table>
+<thead>
+<tr>
+<th>记录维度</th>
+<th>应向招聘方确认</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>身份与时间</td>
+<td>实习 / 校招 / 社招，批次、年份、城市、岗位、团队</td>
+</tr>
+<tr>
+<td>现金</td>
+<td>税前月薪、保证发薪月数、绩效奖金的条件与波动</td>
+</tr>
+<tr>
+<td>一次性项目</td>
+<td>签字费、搬迁补贴，发放条件与返还条款</td>
+</tr>
+<tr>
+<td>长期激励</td>
+<td>股票 / 期权、估值口径、归属期、流动性，不当作确定现金</td>
+</tr>
+<tr>
+<td>实习条件</td>
+<td>日薪、计薪天数、住宿餐补、时长与转正流程</td>
+</tr>
+<tr>
+<td>机会质量</td>
+<td>真实工作内容、导师、代码所有权、算力资源与成长空间</td>
+</tr>
+</tbody></table>
+<p>比较时把“保证现金”“不确定奖金”“长期激励”分别列出。岗位方向比 SP / SSP 标签更能帮助判断日常工作是否匹配。具体金额、合同和税务问题应再核对正式文件。</p>
+<h2>投递与跟进记录</h2>
+<table>
+<thead>
+<tr>
+<th>单位 / 团队</th>
+<th>岗位链接</th>
+<th>城市 / 身份</th>
+<th>技能缺口</th>
+<th>作品依据</th>
+<th>投递时间 / 进度</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>待填写</td>
+<td>官方 JD</td>
+<td>待填写</td>
+<td>待填写</td>
+<td>仓库 / 报告</td>
+<td>未投递</td>
+</tr>
+</tbody></table>
+<p>个人电话、面试题、offer 原件与薪资截图不要提交到公开仓库。</p>
+<p>资料整理日期：2026-10-23。岗位与薪资会变化，以上是准备框架与官方检索入口，不是实时招聘或薪酬调查。</p>
+
+        </section>
+    </main>
+    <footer class="site-footer"><a class="quiet-home-link" href="/">← Litstar · 个人主页</a><span>Study / 独立整理空间</span></footer>
+</body>
+</html>
